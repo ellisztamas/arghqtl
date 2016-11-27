@@ -13,11 +13,10 @@
 #' poorly defined and excluded from clustering.
 #' 
 #' @export
-cluster_qtl <-
-function(chr, qtl_list, model_fit_list, threshold = NULL){
+cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL){
   # Get ML positions for each QTL
   ax <- vector('list', length(qtl_list))
-  for(l in 1:length(qtl_list)) ax[[l]] <- bayesint_table(qtl_list[[l]], model_fit_list[[l]])
+  for(l in 1:length(qtl_list)) ax[[l]] <- cbind(experiment=l, bayesint_table(qtl_list[[l]], model_fit_list[[l]]))
   ax <- do.call('rbind', ax)
   
   clusters <- list() # empty list
@@ -50,13 +49,11 @@ function(chr, qtl_list, model_fit_list, threshold = NULL){
     }
   }
   qtl_clusters <- do.call('rbind', clusters) # create a data.frame from the list.
+  qtl_clusters <- do.call('rbind', as.list(by(qtl_clusters, qtl_clusters$chr, function(qtl_clusters) qtl_clusters[order(qtl_clusters$ML_bayesint),])))
+  rownames(qtl_clusters) <- 1:nrow(qtl_clusters)
   
-    # summary table
-  ML_positions <- data.frame(chr      = tapply(qtl_clusters$chr, qtl_clusters$QTL_id, mean),
-                             n.qtl    = as.integer(table(qtl_clusters$QTL_id)),
-                             position = sapply(split(qtl_clusters, qtl_clusters$QTL_id), function(x) weighted.mean(x$ML_bayesint, x$LOD)),
-                             min      = tapply(qtl_clusters$ML_bayesint, qtl_clusters$QTL_id, min),
-                             max      = tapply(qtl_clusters$ML_bayesint, qtl_clusters$QTL_id, max),
-                             effect   = tapply(qtl_clusters$effect, qtl_clusters$QTL_id, mean))
-  return(list(summary = ML_positions, full.list = qtl_clusters))
+  return(list(summary = cluster_qtl_summary(qtl_clusters), full.list = qtl_clusters))
 }
+
+
+

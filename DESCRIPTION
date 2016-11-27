@@ -1,0 +1,11 @@
+Package: qtltools
+Type: Package
+Title: Tools for plotting QTL
+Version: 1.0
+Date: 2016-10-13
+Author: Tom Ellis
+Maintainer: Tom Ellis <thomas.ellis@ebc.uu.se>
+Description: Extensions to the R/QTL package for importing and plotting QTL
+    positions and effect sizes.
+License: What license is it under?
+RoxygenNote: 5.0.1
