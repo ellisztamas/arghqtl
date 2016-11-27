@@ -1,17 +1,22 @@
 #' Points for QTL effect sizes.
 #' 
-#' Add points for QTL effect sizes to an existing qtleffects plot.
-#' These can be raw effect sizes or percent variance explained (PVE).
-#' For the former, confidence intervals are also plotted.
+#' Add points for QTL effect sizes or PVE to an existing qtleffects plot.
+#' Optionally, credible intervals for QTL position are also plotted.
+#' Ploting can either use qtl and fitqtl objects, or a cluster_object.
 #' 
 #' @param qtleffects A qtleffects object from qtleffects() denoting x-value positions.
-#' @param qtlobject A QTL object from r/qtl.
-#' @param model_fit A fitQTL object from r/qtl.
+#' @param qtlobject A QTL object from r/qtl. If this is specifed, model_fit should be
+#' as well, but cluster_qtl should not.
+#' @param model_fit A fitQTL object from r/qtl. If this is specifed, qtl_object should be
+#' as well, but cluster_qtl should not.
+#' @param cluster_qtl A cluster_qtl object listing information on QTL grouped into clusters.
+#' Usually the output of cluster_qtl(). If this is specified, qtl_object and model_fit
+#' should not be.
 #' @param type Variable to be plotted. This should either be 'effect' to plot raw effect
 #' sizes, or 'PVE' to plot percentages of variance explained.
 #' @param plot_pos logical; if TRUE, plot confidence intervals for QTL position.
 #' @param effect_weight scalar multiplier for the magnitude of effect sizes.
-#' @param ... further arguments passed to points.
+#' @param ... Further arguments passed to points.
 #' 
 #' @export
 qtleffects_points <- function(qtleffects, qtl_object=NULL, model_fit=NULL, cluster_qtl=NULL, type='effect', plot_pos=T, plot_points=T, effect_weight=1, ...){
@@ -50,7 +55,7 @@ qtleffects_points <- function(qtleffects, qtl_object=NULL, model_fit=NULL, clust
     }
   }
   
-  # 
+  # Plot points if a QTL cluster object has been supplied.
   else if (is.null(qtl_object) & is.null(model_fit) &!is.null(cluster_qtl)){
     cluster_qtl$summary[, c('effect_mean', 'effect_min', 'effect_max')] <- cluster_qtl$summary[, c('effect_mean', 'effect_min', 'effect_max')] * effect_weight
     xvals <- numeric(length(qtleffects$chr)) # empty vector to store x-values
