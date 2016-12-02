@@ -44,9 +44,9 @@ plotQTL_qtl <-
       qtl_positions$bg[qtl_positions$interval_length <  fill_cutoff] <- col
       qtl_positions$bg[qtl_positions$interval_length >= fill_cutoff] <- 'white'
       # add confidence intervals
-      segments(xv, -qtl_positions$max_bayesint, xv, -qtl_positions$min_bayesint, ...)
+      segments(xv, -qtl_positions$max_bayesint, xv, -qtl_positions$min_bayesint, col=col, ...)
       # plot ML positions
-      points(xv, -qtl_positions$ML_bayesint, pch=qtl_positions$pch, bg=qtl_positions$bg, ...)
+      points(xv, -qtl_positions$ML_bayesint, pch=qtl_positions$pch, col=col, bg=qtl_positions$bg, ...)
     }
     
     # Plot point estimates and credible intervals for a cluster object.
