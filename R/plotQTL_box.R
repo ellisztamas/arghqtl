@@ -21,14 +21,14 @@ function(plotQTL, track, upper, lower, left_lane = NULL, right_lane=NULL, lwd=0.
   # set the left hand boundary
   if(is.null(left_lane)){ # default to left-most lane
     x1 <- plotQTL$lane_margins[1,   track]
-  } else if(is.integer(left_lane)){
+  } else if(is.numeric(left_lane)){
     x1 <- plotQTL$lane_margins[left_lane, track] # if left lane has been assigned, use this
   } else return(print("left_lane should be NULL or an integer."))
   
   if(is.null(right_lane)){
     x2 <- plotQTL$lane_margins[plotQTL$nlanes+1, track] # default to right most lane
-  } else if(is.integer(right_lane)){
-    x1 <- plotQTL$lane_margins[right_lane, track] # assign a specific lane
+  } else if(is.numeric(right_lane)){
+    x2 <- plotQTL$lane_margins[right_lane, track] # assign a specific lane
   } else return(print("right_lane should be NULL or an integer."))
   # draw the box
   rect(x1, lower, x2, upper, col = col, border = border, lwd=lwd, ...)

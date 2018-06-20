@@ -2,6 +2,7 @@
 
 export(bayesint_table)
 export(cluster_qtl)
+export(cluster_qtl_summary)
 export(plotQTL)
 export(plotQTL_base)
 export(plotQTL_box)

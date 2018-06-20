@@ -57,27 +57,31 @@ qtleffects_points <- function(qtleffects, qtl_object=NULL, model_fit=NULL, clust
   
   # Plot points if a QTL cluster object has been supplied.
   else if (is.null(qtl_object) & is.null(model_fit) &!is.null(cluster_qtl)){
-    cluster_qtl$summary[, c('effect_mean', 'effect_min', 'effect_max')] <- cluster_qtl$summary[, c('effect_mean', 'effect_min', 'effect_max')] * effect_weight
+    # if a full cluster_qtl object has been given, use only the summary
+    if(is.list(cluster_qtl) & all(names(cluster_qtl) == c("summary", "full.list"))) cluster_qtl <- cluster_qtl$summary
+    
+    # correct for any weighting of effect sizes.
+    cluster_qtl[, c('effect_mean', 'effect_min', 'effect_max')] <- cluster_qtl[, c('effect_mean', 'effect_min', 'effect_max')] * effect_weight
     xvals <- numeric(length(qtleffects$chr)) # empty vector to store x-values
     # Get x-values for each point
-    row_number <- match(cluster_qtl$summary$chr, qtleffects$chr_start$Chromosome)
-    xvals      <- cluster_qtl$summary$pos_mean + qtleffects$chr_start$plot_position[row_number]
+    row_number <- match(cluster_qtl$chr, qtleffects$chr_start$Chromosome)
+    xvals      <- cluster_qtl$pos_mean + qtleffects$chr_start$plot_position[row_number]
     # Get y-values and plot
     if(type == 'effect'){
       # add ranges for effect sizes
-      arrows(xvals, cluster_qtl$summary$effect_min,
-             xvals, cluster_qtl$summary$effect_max,
+      arrows(xvals, cluster_qtl$effect_min,
+             xvals, cluster_qtl$effect_max,
              length=0, angle = 90, code = 3, ...)
       # if desired, add CIs for QTL position.
-      if(plot_pos) segments(cluster_qtl$summary$pos_min + qtleffects$chr_start$plot_position[row_number], cluster_qtl$summary$effect_mean, 
-                            cluster_qtl$summary$pos_max + qtleffects$chr_start$plot_position[row_number], cluster_qtl$summary$effect_mean, ...)
-      if(plot_points) points(xvals, cluster_qtl$summary$effect_mean, ...) # plot effect sizes
+      if(plot_pos) segments(cluster_qtl$pos_min + qtleffects$chr_start$plot_position[row_number], cluster_qtl$effect_mean, 
+                            cluster_qtl$pos_max + qtleffects$chr_start$plot_position[row_number], cluster_qtl$effect_mean, ...)
+      if(plot_points) points(xvals, cluster_qtl$effect_mean, ...) # plot effect sizes
     }
     if(type=='PVE'){
       # if desired, add CIs for QTL position.
-      if(plot_pos) segments(cluster_qtl$summary$pos_min + qtleffects$chr_start$plot_position[row_number], cluster_qtl$summary$effect_mean, 
-                            cluster_qtl$summary$pos_max + qtleffects$chr_start$plot_position[row_number], cluster_qtl$summary$effect_mean, ...)
-      if(plot_points) points(xvals, cluster_qtl$summary$effect_mean, ...) # plot PVE
+      if(plot_pos) segments(cluster_qtl$pos_min + qtleffects$chr_start$plot_position[row_number], cluster_qtl$effect_mean, 
+                            cluster_qtl$pos_max + qtleffects$chr_start$plot_position[row_number], cluster_qtl$effect_mean, ...)
+      if(plot_points) points(xvals, cluster_qtl$effect_mean, ...) # plot PVE
     }
   }
   else print("Supply either a qtl object with a fitqtl object, or else a QTL cluster object from cluster_qtl.")

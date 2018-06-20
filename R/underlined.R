@@ -7,9 +7,9 @@
 #' 
 #' @export
 underlined <-
-function(x, y, label, ...){ 
-  text(x, y, label, ...) 
-  sw <- strwidth(label) 
-  sh <- strheight(label) 
-  lines(x + c(-sw/2, sw/2), rep(y - 1.5*sh/2, 2), ...) 
+function(x, y, label, cex=1, ...){ 
+  text(x, y, label, cex=cex, ...) 
+  sw <- strwidth(label) * cex
+  sh <- strheight(label) * cex
+  lines(as.vector(x) + c(-sw/2, sw/2), rep(y - 1.5*sh/2, 2), ...) 
 }

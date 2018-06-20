@@ -11,6 +11,7 @@
 #' @param qtl_list A list of QTL objects from r/qtl (i.e list(object1, object2, ...))
 #' @param threshold Maximum length in centimorgans above which QTL are considered to be
 #' poorly defined and excluded from clustering.
+#' @param qtl_labels Prefix for labels for QTL. Usually a string. Defaults to "QTL".
 #' 
 #' @export
 cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL){
@@ -18,13 +19,14 @@ cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL){
   ax <- vector('list', length(qtl_list))
   for(l in 1:length(qtl_list)) ax[[l]] <- cbind(experiment=l, bayesint_table(qtl_list[[l]], model_fit_list[[l]]))
   ax <- do.call('rbind', ax)
+  ax <- ax[order(ax$ML_bayesint),] # sort by position
   
   clusters <- list() # empty list
   counter <- 1       # initialise counter
   
   for(c in chr){ #loop over chromosomes
     this_chr <- ax[ax$chr == c,] # pull out this chromosome only
-    if(is.numeric(threshold)) this_chr <- this_chr[this_chr$length <= threshold,]
+    if(is.numeric(threshold)) this_chr <- this_chr[this_chr$length <= threshold,] # ignore QTL which have poorly defined intervals
     
     while(nrow(this_chr)  != 0){
       clusters[[counter]] <- this_chr[1,] # initialise first cluster with the first entry
@@ -49,6 +51,7 @@ cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL){
     }
   }
   qtl_clusters <- do.call('rbind', clusters) # create a data.frame from the list.
+  # sort by chromosome and position
   qtl_clusters <- do.call('rbind', as.list(by(qtl_clusters, qtl_clusters$chr, function(qtl_clusters) qtl_clusters[order(qtl_clusters$ML_bayesint),])))
   rownames(qtl_clusters) <- 1:nrow(qtl_clusters)
   

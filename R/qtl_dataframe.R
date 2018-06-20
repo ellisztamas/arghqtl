@@ -24,6 +24,9 @@ qtl_dataframe <- function(phenotypes, genotypes, phenotype_id_column=1, genotype
   new_genotypes <- rbind(genotypes[1:2,], new_genotypes) # add back in the chromosome number and genetic map
   new_genotypes <- new_genotypes[,-1] # remove column with genotype IDs
   
+  # add whitespace to the first two rows of the phenotype columns so that r/qtl can read it.
   qtl_matrix <- cbind(new_phenotypes, new_genotypes)
+  qtl_matrix[1:2, 1:ncol(phenotypes)] <- ""
+  
   return(qtl_matrix)
 }
