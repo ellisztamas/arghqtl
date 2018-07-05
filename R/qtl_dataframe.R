@@ -13,6 +13,10 @@
 #' 
 #' @export
 qtl_dataframe <- function(phenotypes, genotypes, phenotype_id_column=1, genotype_id_column=1){
+  if(any(is.na(phenotypes[phenotype_id_column]))){
+    warning("One or more labels in phenotype data is NA. These will be removed. ")
+    phenotypes <- phenotypes[!is.na(phenotypes[phenotype_id_column]),]
+  }
   # add two blank rows of NAs at the top of the phenotype data 
   new_phenotypes                          <- as.data.frame(matrix(NA, nrow(phenotypes) + 2, ncol(phenotypes))) # blank matrix
   new_phenotypes[3:nrow(new_phenotypes),] <- phenotypes # insert data two rows down

@@ -7,11 +7,11 @@
 #' @export
 bayesint_table <- function(qtl_object, model_fit){
   if(class(qtl_object) != 'qtl'){
-    print("qtl_object should be of class 'qtl'.")
+    warning("qtl_object should be of class 'qtl'.")
     return(NULL)
   }
   if(class(model_fit) != 'fitqtl'){
-    print("model_fit should be of class 'model_fit'.")
+    warning("model_fit should be of class 'model_fit'.")
     return(NULL)
   }
   library(qtl)

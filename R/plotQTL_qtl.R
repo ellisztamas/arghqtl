@@ -70,5 +70,5 @@ plotQTL_qtl <-
       segments(xv, -cluster_qtl$pos_min, xv, -cluster_qtl$pos_max, col=col)
       points(xv, -cluster_qtl$pos_mean, col=col, pch= cluster_qtl$pch, bg=cluster_qtl$bg)
     }
-    else print("Supply either a qtl object with a fitqtl object, or else a QTL cluster object from cluster_qtl.")
+    else warning("Supply either a qtl object with a fitqtl object, or else a QTL cluster object from cluster_qtl.")
   }
