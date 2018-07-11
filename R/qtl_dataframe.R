@@ -13,6 +13,11 @@
 #' 
 #' @export
 qtl_dataframe <- function(phenotypes, genotypes, phenotype_id_column=1, genotype_id_column=1){
+  if(any(rowSums(is.na(phenotypes[,-phenotype_id_column])) == ncol(phenotypes)-1)){
+    warning("One or more rows in phenotype data is all NA. These will be removed.")
+    phenotypes <- phenotypes[rowSums(is.na(phenotypes[,-phenotype_id_column])) < ncol(phenotypes)-1,]
+  }
+  
   if(any(is.na(phenotypes[phenotype_id_column]))){
     warning("One or more labels in phenotype data is NA. These will be removed. ")
     phenotypes <- phenotypes[!is.na(phenotypes[phenotype_id_column]),]
