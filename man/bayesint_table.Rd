@@ -18,4 +18,3 @@ confidence intervals.
 \description{
 Create a table of maximum likelihood and Bayesian credible interval positions for a QTL object.
 }
-

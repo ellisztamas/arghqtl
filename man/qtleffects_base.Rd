@@ -24,4 +24,3 @@ y-axis length. Negative values will anchor ticks above the minimum y value.}
 \description{
 Creates an empty plot for plotting QTL effect sizes from a qtleffects object.
 }
-

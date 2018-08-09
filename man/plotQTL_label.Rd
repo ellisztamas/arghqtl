@@ -39,4 +39,3 @@ Plot labels for QTL or QTL regions on the left of a track in a plotQTL plot.
 If map positions are supplied, a bar can be drawn to indicate the extent of a
 QTL region.
 }
-

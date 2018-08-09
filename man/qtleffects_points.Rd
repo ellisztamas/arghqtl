@@ -4,23 +4,34 @@
 \alias{qtleffects_points}
 \title{Points for QTL effect sizes.}
 \usage{
-qtleffects_points(qtleffects, qtl_object, model_fit, type = "effect", ...)
+qtleffects_points(qtleffects, qtl_object = NULL, model_fit = NULL,
+  cluster_qtl = NULL, type = "effect", plot_pos = T, plot_points = T,
+  effect_weight = 1, ...)
 }
 \arguments{
 \item{qtleffects}{A qtleffects object from qtleffects() denoting x-value positions.}
 
-\item{model_fit}{A fitQTL object from r/qtl.}
+\item{model_fit}{A fitQTL object from r/qtl. If this is specifed, qtl_object should be
+as well, but cluster_qtl should not.}
+
+\item{cluster_qtl}{A cluster_qtl object listing information on QTL grouped into clusters.
+Usually the output of cluster_qtl(). If this is specified, qtl_object and model_fit
+should not be.}
 
 \item{type}{Variable to be plotted. This should either be 'effect' to plot raw effect
 sizes, or 'PVE' to plot percentages of variance explained.}
 
-\item{...}{further arguments passed to points.}
+\item{plot_pos}{logical; if TRUE, plot confidence intervals for QTL position.}
 
-\item{qtlobject}{A QTL object from r/qtl.}
+\item{effect_weight}{scalar multiplier for the magnitude of effect sizes.}
+
+\item{...}{Further arguments passed to points.}
+
+\item{qtlobject}{A QTL object from r/qtl. If this is specifed, model_fit should be
+as well, but cluster_qtl should not.}
 }
 \description{
-Add points for QTL effect sizes to an existing qtleffects plot.
-These can be raw effect sizes or percent variance explained (PVE).
-For the former, confidence intervals are also plotted.
+Add points for QTL effect sizes or PVE to an existing qtleffects plot.
+Optionally, credible intervals for QTL position are also plotted.
+Ploting can either use qtl and fitqtl objects, or a cluster_object.
 }
-

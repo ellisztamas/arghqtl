@@ -4,33 +4,39 @@
 \alias{plotQTL_qtl}
 \title{Plot QTL positions.}
 \usage{
-plotQTL_qtl(plotQTL, qtl_object, model_fit, lane, fill_cutoff = 0, col = 1,
-  ...)
+plotQTL_qtl(plotQTL, qtl_object = NULL, model_fit = NULL,
+  cluster_qtl = NULL, lane, fill_cutoff = NULL, col = 1, ...)
 }
 \arguments{
 \item{plotQTL}{A plotQTL object from plotQTL().}
 
-\item{model_fit}{A fitQTL object from r/qtl.}
+\item{model_fit}{A fitQTL object from r/qtl. If this is specifed, qtl_object should be
+as well, but cluster_qtl should not.}
+
+\item{cluster_qtl}{A cluster_qtl object listing information on QTL grouped into clusters.
+Usually the output of cluster_qtl(). If this is specified, qtl_object and model_fit
+should not be.}
 
 \item{lane}{Integer indicating which lane to plot to.}
 
 \item{fill_cutoff}{Threshold length of a confidence interval on QTL positions, above which
 points will be empty, and below which points will be filled.}
 
-\item{col}{Plotting colour.}
+\item{col}{Plotting colour. Defaults to black.}
 
-\item{...}{Additional plotting commands.}
+\item{...}{Additional plotting commands passed to points() and segments().}
 
-\item{qtlobject}{A QTL object from r/qtl.}
+\item{qtlobject}{A QTL object from r/qtl. If this is specifed, model_fit should be
+as well, but cluster_qtl should not.}
 }
 \description{
-Plot QTL positions and confidence intervals from an r/qtl object onto a plotQTL plot.
-Maximum-likelihood positions are labelled with an upward arrow if the reference allele
-increases the phenotype, and vice versa.
+Plot QTL positions and confidence intervals from onto a plotQTL plot.
+This can be done with a qtl object with a fitqtl object, or else with a cluster_qtl
+object. In the former case, maximum-likelihood positions are labelled with an upward
+arrow if the reference allele increases the phenotype, and vice versa.
 }
 \details{
 QTL with narrow confidence intervals are plotted with filled arrows. If confidence
 intervals are greater than a threshold number of centimorgans, arrows are plotted empty.
 This can be disabled by setting fill_cutoff to a larger number than the longest interval.
 }
-

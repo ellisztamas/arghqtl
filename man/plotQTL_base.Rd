@@ -4,12 +4,16 @@
 \alias{plotQTL_base}
 \title{Set up an empty plot for QTL positions}
 \usage{
-plotQTL_base(plotQTL, by = 20)
+plotQTL_base(plotQTL, by = 20, maxy = 11, miny = 11, ...)
 }
 \arguments{
 \item{plotQTL}{A plotQTL object from plotQTL().}
 
 \item{by}{Intervals between y-axis tick labels. Defaults to 20.}
+
+\item{maxy, miny}{Upper and lower limits of the y-axis.}
+
+\item{...}{Additional arguments passed to graphical parameters.}
 }
 \value{
 An empty plot to which QTL tracks can be added.
@@ -18,4 +22,3 @@ An empty plot to which QTL tracks can be added.
 Creates an empty genome mapping for plotting positions and confidence intervals
 of QTL inferred using r/qtl
 }
-

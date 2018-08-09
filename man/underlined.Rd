@@ -4,7 +4,7 @@
 \alias{underlined}
 \title{Add underlined text to a plot.}
 \usage{
-underlined(x, y, label, ...)
+underlined(x, y, label, cex = 1, ...)
 }
 \arguments{
 \item{x}{X-axis position for text.}
@@ -18,4 +18,3 @@ underlined(x, y, label, ...)
 \description{
 Add underlined text to a plot.
 }
-

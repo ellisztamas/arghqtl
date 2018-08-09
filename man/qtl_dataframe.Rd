@@ -24,4 +24,3 @@ those for the phenotype table.}
 Match datatables for phenotypes and genotypes for a set of lines, and combine these into a 
 single dataframe that r/qtl can read.
 }
-

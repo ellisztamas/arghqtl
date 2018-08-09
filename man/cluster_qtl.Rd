@@ -13,13 +13,25 @@ cluster_qtl(chr, qtl_list, model_fit_list, threshold = NULL)
 
 \item{threshold}{Maximum length in centimorgans above which QTL are considered to be
 poorly defined and excluded from clustering.}
+
+\item{qtl_labels}{Prefix for labels for QTL. Usually a string. Defaults to "QTL".}
+}
+\value{
+Two data frames:
+\enumerate{
+\item{1. A summary table of each cluster, indicating the
+mean and the maximum extent of 95% credible intervals, effect sizes, and
+percentage of total phenotypic variance explained for all QTL in the cluster.
+See \code{?cluster_qtl_summary}.}
+\item{2. Full details of all the QTL, indicating which clutser they belong to. }
+}
 }
 \description{
 Loci in a list of QTL objects are grouped by position.
-Loci are declared to be colocalised if the confidence intervals on locus position overlap.
-When the position of a QTL is poorly defined and confidence intervals are large, the locus
-colocalises with many other loci, probably erroneously. To combat this, set a maximum
-length using the argument threshold; QTL with confidence intervals longer than this will
-be excluded from clustering.
+Loci are declared to be colocalised if the confidence intervals on locus
+position overlap. When the position of a QTL is poorly defined and confidence
+intervals are large, the locus colocalises with many other loci, probably
+erroneously. To combat this, set a maximum length using the argument
+threshold; QTL with confidence intervals longer than this will be excluded
+from clustering.
 }
-

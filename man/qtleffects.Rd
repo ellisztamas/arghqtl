@@ -22,4 +22,3 @@ and x-values for the start of each chromosome.
 \description{
 Creates an object needed to plot effect sizes of QTL from r/qtl.
 }
-
