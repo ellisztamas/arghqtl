@@ -1,13 +1,22 @@
-# qtltools
-A package for manipulating and plotting information from R/QTL objects generated from the package `qtl`. This was mainly intended to generate plots like that given by [Ågren *et al.* ](http://www.pnas.org/content/110/52/21077.short) in future papers.
+# arghqtl
+Tools for plotting and downstream analysis of R/QTL objects in R.
+It is intended in particular for cases where there are many QTL models to compare, and one's first though about how to plot them is 'aaaaaargh!'.
+
+Additional tools are provided for grouping QTL if their credible intervals overlap.
 
 ## Installation
 Using devtools from within R:
 
 ```
 install.packages('devtools')
-devtools::install_github("ellisztamas/qtltools")
+devtools::install_github("ellisztamas/arghqtl")
 ```
+
+### Dependencies
+All input data is output data from functions in `qtl`. In addition, `rmarkdown` and `knitr` may be needed to knit the vignette.
+
+## Tutorial
+A vignette is provided covering basic usage.
 
 ## Authors and license information
 

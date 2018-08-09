@@ -1,11 +1,20 @@
-Package: qtltools
+Package: arghqtl
 Type: Package
-Title: Tools for plotting QTL
-Version: 1.0
-Date: 2016-10-13
+Title: Tools for plotting and downstream analysis of R/QTL objects in R
+Version: 0.5.0
 Author: Tom Ellis
 Maintainer: Tom Ellis <thomas.ellis@ebc.uu.se>
-Description: Extensions to the R/QTL package for importing and plotting QTL
-    positions and effect sizes.
-License: What license is it under?
-RoxygenNote: 5.0.1
+Description: Tools for creating more complex QTL plots for publication
+    than the base tools in r/qtl allow. In particular, plots with multiple
+    lanes per chromosome can be created to show, for example, different
+    traits, or results from replicate experiments. Additional tools are
+    provided for grouping QTL if their credible intervals overlap.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports:
+    qtl
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
