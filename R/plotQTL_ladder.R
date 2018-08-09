@@ -1,14 +1,15 @@
-#' Plot lane margins in a plotQTL plot.
+#' Plot marker positions in a plotQTL plot.
 #' 
 #' Plots a solid axis with marker locations to the left of each chromosome track,
 #' and dashed grey dividers between lanes.
 #' 
 #' @param plotQTL A plotQTL object from plotQTL().
 #' @param marker_tick_width Width of marker labels.
-#' @param col Colour for lane margins
+#' @param col Colour for lane margins.
+#' @param lty Line style.
 #' 
 #' @export
-plotQTL_lanes <-
+plotQTL_ladder <-
 function(plotQTL, marker_tick_width=0.5, col='gray50', lty='dashed'){
   # positions for the chromosome vertical lines
   chr_xv  <- plotQTL$lane_margins[1,]
