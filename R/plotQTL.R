@@ -1,21 +1,25 @@
-#' Creates an object needed to create QTL plots.
+#' Create an object needed to create QTL plots.
 #'
-#' Creates a list of information needed to plot QTL across a genome, for all or only a subset
-#' of chromsomes.
-#' For each chromosome specified a 'track' is created, which is further divided into lanes
-#' for plotting QTL from different years or experiments. QTL positions and their confidence
-#' intervals are plotted to the centre of these lanes, and dividing lanes plotted between
-#' each lane. These lane centres and margin positions can be used to add extra information,
-#' such as lane labels above the chromosome.
+#' Creates a list of information needed to plot QTL across a genome, for all or
+#' only a subset of chromsomes.
 #' 
-#' The gap between chromosomes can be adjusted to include further embellishments, and the plot
-#' will rescale automatically.
+#' For each chromosome specified a 'track' is created, which is further divided
+#' into lanes for plotting QTL from different years or experiments. QTL
+#' positions and their confidence intervals are plotted to the centre of these
+#' lanes, and dividing lanes plotted between each lane. These lane centres and
+#' margin positions can be used to add extra information, such as lane labels
+#' above the chromosome.
+#' 
+#' The gap between chromosomes can be adjusted to include further embellishments,
+#' and the plot  will rescale automatically.
 #'
 #' @param chr a numeric vector listing which chromosomes are to be plotted.
 #' @param marker_locations A data.frame listing marker positions on each chromosome.
 #' Should include a column labelled 'Position' and another labelled 'Chromosome'.
-#' @param nlanes the number of lanes to plot for each chromosome. Defaults to two for Sweden vs. Italy.
-#' left_gap, right_gap left- and right-hand margin around each chromosome.
+#' @param nlanes the number of lanes to plot for each chromosome.
+#' @param left_gap,right_gap Additional space on the left- and right-hand sides
+#' of each chromosome for additional labels.
+#' 
 #' @return A list of two tables detailing:
 #' \enumerate{
 #' \item  Chromosomes to be plotted

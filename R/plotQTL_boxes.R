@@ -6,30 +6,25 @@
 #' lanes by specifying the lane margins in left_lane and right_lane.
 #' 
 #' @param plotQTL A plotQTL object from plotQTL().
-#' @param track Integer indicating which chromosome track in the plotQTL object to plot to.
-#' @param upper Marker position for the top of the box.
-#' @param lower Marker position for the top of the box.
-#' @param left_lane Integer indicating the left-hand lane margin of the box.
-#' @param right_lane Integer indicating the right-hand lane margin of the box.
-#' @param lwd Width of the border.
-#' @param border Colour of the border.
-#' @param col Colour to fill the box.
-#' 
+#' @param boxes A dataframe listing chomosome, lower bound and upper bounds for 
+#' the box. This can be generated using cluster_qtl().
+#' @param margins Optional vector of two elements giving the left- and right-most
+#' margins for the box. If not used, the whole width of the chromosome will be
+#' used.
+#' @param ... Additional parameters passed to graphical functions.
+#'
 #' @export
-plotQTL_box <-
-function(plotQTL, track, upper, lower, left_lane = NULL, right_lane=NULL, lwd=0.5, border="gray50", col="gray76", ...){
-  # set the left hand boundary
-  if(is.null(left_lane)){ # default to left-most lane
-    x1 <- plotQTL$lane_margins[1,   track]
-  } else if(is.numeric(left_lane)){
-    x1 <- plotQTL$lane_margins[left_lane, track] # if left lane has been assigned, use this
-  } else return(print("left_lane should be NULL or an integer."))
+plotQTL_boxes <- function(plotQTL, boxes, margins='full', ...){
+  if(margins == 'full'){
+    margins <- c(1, nrow(plotQTL$lane_margins))
+  } else if(length(margins) != 2){
+    stop("If margins are specified this should be a vector of two elements.")
+  }
+  boxes$track <- match(boxes$chr, colnames(plotQTL$lane_margins)) # vector denoting which track to plot to.
+  boxes <- boxes[boxes$chr %in% 1:plotQTL$ntracks,]
   
-  if(is.null(right_lane)){
-    x2 <- plotQTL$lane_margins[plotQTL$nlanes+1, track] # default to right most lane
-  } else if(is.numeric(right_lane)){
-    x2 <- plotQTL$lane_margins[right_lane, track] # assign a specific lane
-  } else return(print("right_lane should be NULL or an integer."))
-  # draw the box
-  rect(x1, lower, x2, upper, col = col, border = border, lwd=lwd, ...)
+  rect(plotQTL$lane_margins[margins[1],boxes$track],
+       -boxes$upper,
+       plotQTL$lane_margins[margins[2],boxes$track],
+       -boxes$lower, ...)
 }

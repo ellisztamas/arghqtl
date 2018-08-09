@@ -1,14 +1,16 @@
 #' Make a summary table of clusters of QTL.
 #' 
-#' Creates a data.frame summarising information about groups of QTL clustered using cluster_qtl().
-#' Clusters will be labelled with the chromosome and index, with an optional prefix.
+#' Creates a data.frame summarising information about groups of QTL clustered
+#' using cluster_qtl(). Clusters will be labelled with the chromosome and index,
+#' with an optional prefix.
 #' 
-#' @param qtl_clusters Data.frame containing information on clustered QTL, usually from the output of
-#' cluster_qtl.
+#' @param qtl_clusters Data.frame containing information on clustered QTL,
+#' usually from the output of cluster_qtl.
 #' 
-#' @returns Data.frame listing information for each cluster. Information includes the chromosome number,
-#' number of QTL in the cluster, then the range and weighted mean values for position (cM), effect size
-#' and precentage of the variation explained.
+#' @return Data.frame listing information for each cluster. Information
+#' includes the chromosome number, number of QTL in the cluster, then the range
+#' and weighted mean values for position (cM), effect size and precentage of the
+#' variation explained.
 #' 
 #' @export
 cluster_qtl_summary <- function(qtl_clusters){

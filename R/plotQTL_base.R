@@ -5,9 +5,10 @@
 #' 
 #' @param plotQTL A plotQTL object from plotQTL().
 #' @param by Intervals between y-axis tick labels. Defaults to 20.
-#' @param maxy upper limit of the y-axis.
-#' @return An empty plot to which QTL tracks can be added.
+#' @param maxy,miny Upper and lower limits of the y-axis.
+#' @param ... Additional arguments passed to graphical parameters.
 #' 
+#' @return An empty plot to which QTL tracks can be added.
 #' @export
 plotQTL_base <-
 function(plotQTL, by=20, maxy= 11, miny=11, ...){
