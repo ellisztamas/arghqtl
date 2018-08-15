@@ -81,16 +81,9 @@ plotQTL_base(pos_plot, by=20, maxy = 20)
 plotQTL_ladder(pos_plot)
 ```
 
-We can add lane dividers and labels using base R functions, and telling them where the lane margins are.
+We can add labels using the base R `text` function, and telling it where the lanes are.
 
 ```{r, eval=F}
-# lane dividers
-segments(
-  x0 = pos_plot$lane_margins[-1, ],
-  y0 = 0,
-  x1 = pos_plot$lane_margins[-1, ],
-  y1 = rep(-pos_plot$track_lengths, each = pos_plot$nlanes),
-  lty=2, col='gray50')
 # lane labels
 text(pos_plot$lane_centres, 10, c("It", "Sw"))
 ```
@@ -143,13 +136,7 @@ pos_plot <- plotQTL(
 
 # Plot empty QTL map.
 plotQTL_base(pos_plot, by=20, maxy = 20)
-plotQTL_ladder(pos_plot, lty=0)
-segments(
-  x0 = pos_plot$lane_margins[-1, ],
-  y0 = 0,
-  x1 = pos_plot$lane_margins[-1, ],
-  y1 = rep(-pos_plot$track_lengths, each = pos_plot$nlanes),
-  lty=2, col='gray50')
+plotQTL_ladder(pos_plot, lty=2)
 text(pos_plot$lane_centres, 10, c("It", "Sw"))
 
 # Plot QTL in Italy
@@ -222,14 +209,15 @@ plotQTL_boxes(pos_plot, clusters$ffit$boxes, margins = c(9,13), col='gray75', bo
 ```
 
 ## Custom labels
-Plotting lane dividers is the same as in the previous plot.
+Lane dividers can be customised based on lane position. Calling `plotQTL_ladder` but setting `lty=0` plot marker positions, but leaves lane dividers blank. You can call the base R function `segments` to plot lane dividers independently. In this case, dashed lines are drawn between each lane, and traits are separated by solid line. Notice that no line is plotted on the left most margin (the `-1` index to `pos_plot$lane_margins`), because we have already added marker positions.
 
 ```{r, eval=F}
+plotQTL_ladder(pos_plot, lty=0)
+
 # Lanes dividers
 segments(pos_plot$lane_margins[-1,], 0,
          pos_plot$lane_margins[-1,], rep(-pos_plot$track_lengths, each=pos_plot$nlanes),
          lty=c(2,2,2,1), col=c('gray50','gray50','gray50',1))
-plotQTL_ladder(pos_plot, lty=0)
 ```
 
 QTL models follow a hierarchy of year within site within trait. We can add custom lane labels to reflect that by specifying where we would like things plotted. Notice that these examples specify either the centres of lanes or the lane margins, dependning where things need centering.
@@ -287,7 +275,7 @@ for (i in 1:4) {
 
 Here is the full code to create figure \@ref(fig:fig2).
 
-```{r fig2, eval=T, fig.width=16.9/2.54, fig.height=15/2.54, fig.cap="QTL for fecundity, survival and fitness in 2010 and 2011. Arrows indicate most-likely QTL position and the effect of the Swedish genotype (upward: increased phenotype; downward: decreased phenotype) in Italy (red) and Sweden (blue). Vertical bars show the 95% Bayesian credible intervals for QTL position. Open arrows show QTL with credible intervals >15.2cM. Grey boxes indicate the range of colocalising QTL for a single trait across site-year combinations."}
+```{r fig2, eval=T, out.extra='angle=90', fig.width=20/2.54, fig.height=20/2.54, fig.cap="QTL for fecundity, survival and fitness in 2010 and 2011. Arrows indicate most-likely QTL position and the effect of the Swedish genotype (upward: increased phenotype; downward: decreased phenotype) in Italy (red) and Sweden (blue). Vertical bars show the 95\\% Bayesian credible intervals for QTL position. Open arrows show QTL with credible intervals >15.2cM. Grey boxes indicate the range of colocalising QTL for a single trait across site-year combinations."}
 pos_plot <- plotQTL(1:5, mloc, nlanes = 12)
 plotQTL_base(pos_plot, by=20, maxy = 20)
 text(35, -95, "Chromosome")

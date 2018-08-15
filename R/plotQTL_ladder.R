@@ -7,10 +7,11 @@
 #' @param marker_tick_width Width of marker labels.
 #' @param col Colour for lane margins.
 #' @param lty Line style.
+#' @param ... Further graphical parameters passed to \code{segments}.
 #' 
 #' @export
 plotQTL_ladder <-
-function(plotQTL, marker_tick_width=0.5, col='gray50', lty='dashed'){
+function(plotQTL, marker_tick_width=0.5, col='gray50', lty='dashed', ...){
   # positions for the chromosome vertical lines
   chr_xv  <- plotQTL$lane_margins[1,]
   # Vertical lines for the main chromosome lines, with ticks for each marker.
@@ -21,7 +22,10 @@ function(plotQTL, marker_tick_width=0.5, col='gray50', lty='dashed'){
   }
   # plot thin horizontal dividers between plotted chromosomes
   xv <- as.vector(plotQTL$lane_margins)
-  lane_index   <- sort(rep(1:nrow(plotQTL$lane_centres), nrow(plotQTL$lane_margins)))
-  lane_lengths <- rep(plotQTL$track_lengths, nrow(plotQTL$lane_margins))[lane_index]
-  segments(xv, 0, xv, -lane_lengths, lty=lty, col=col)
+  yv <- -rep(plotQTL$track_lengths, each=plotQTL$nlanes+1)
+  segments(x0 = xv,
+           y1 = 0,
+           x1 = xv,
+           y0 = yv,
+           lty = lty, col = col, ...)
 }
