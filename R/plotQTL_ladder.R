@@ -16,13 +16,15 @@ function(plotQTL, marker_tick_width=0.5, col='gray50', lty='dashed', ...){
   chr_xv  <- plotQTL$lane_margins[1,]
   # Vertical lines for the main chromosome lines, with ticks for each marker.
   segments(chr_xv, 0, chr_xv, -plotQTL$track_lengths)
-  for(i in 1:plotQTL$ntracks){
+  for(i in 1:plotQTL$ntracks){ # tick markers
     segments(chr_xv[i],                   -plotQTL$map[[i]],
              chr_xv[i]-marker_tick_width, -plotQTL$map[[i]], lwd=0.5)
   }
+  
+  
   # plot thin horizontal dividers between plotted chromosomes
-  xv <- as.vector(plotQTL$lane_margins)
-  yv <- -rep(plotQTL$track_lengths, each=plotQTL$nlanes+1)
+  xv <- as.vector(plotQTL$lane_margins[-1,])
+  yv <- -rep(plotQTL$track_lengths, each=plotQTL$nlanes)
   segments(x0 = xv,
            y1 = 0,
            x1 = xv,

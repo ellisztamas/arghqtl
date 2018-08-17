@@ -36,11 +36,6 @@ data("mloc") # linkage map:
 
 For each trait there are data for Italy (it) and Sweden (sw) in each year. Each element is a `qtl` object describing a QTL model.
 
-```{r}
-#names(qtl_models$ffit)
-```
-
-
 # Fitness in a single year
 
 We will begin by plotting a simple example: QTL for fitness at two sites in 2011; see figure \@ref(fig:fitness-2011) for what we are aiming for. More specifically the aim is to create a plot showing each of the 5 chromosomes, each with two lanes - one for Italy and one for Sweden. To create a QTL plot we first need to define a set of coordinates, onto which further information will be added.
