@@ -7,11 +7,13 @@
 #' @param by Intervals between y-axis tick labels. Defaults to 20.
 #' @param maxy,miny Upper and lower limits of the y-axis.
 #' @param ... Additional arguments passed to graphical parameters.
+#' @param track_labels Vector of labels to adorn the bottom of each track.
 #' 
 #' @return An empty plot to which QTL tracks can be added.
 #' @export
 plotQTL_base <-
-function(plotQTL, by=20, maxy= 11, miny=11, ...){
+function(plotQTL, by=20, maxy= 11, miny=11, track_labels=NULL, ...){
+  if(is.null(track_labels)) track_labels <- plotQTL$chr
   # set the plot up.
   plot(c(-plotQTL$left_gap, plotQTL$maxx), c(-max(plotQTL$track_lengths)-miny, maxy),
        col="white", frame.plot=F, axes=F, xlab="", ylab="")
@@ -25,5 +27,5 @@ function(plotQTL, by=20, maxy= 11, miny=11, ...){
   # Label chromosome numbers.
   xv <- plotQTL$lane_margins[1,]+5
   yv <- rep(-max(unlist(plotQTL$map)) - 5, plotQTL$ntracks)
-  text(xv, yv, plotQTL$chr, adj=0.5, ...)
+  text(xv, yv, track_labels, adj=0.5, ...)
 }

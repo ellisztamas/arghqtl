@@ -72,7 +72,7 @@ pos_plot$lane_margins
 This code creates a blank (base) plot, and adds marker positions.
 
 ```{r, eval=F}
-plotQTL_base(pos_plot, by=20, maxy = 20)
+plotQTL_base(pos_plot, by=20, maxy = 20, track_labels = paste("Chr.", 1:5))
 plotQTL_ladder(pos_plot)
 ```
 
@@ -130,7 +130,7 @@ pos_plot <- plotQTL(
   right_gap = 4)
 
 # Plot empty QTL map.
-plotQTL_base(pos_plot, by=20, maxy = 20)
+plotQTL_base(pos_plot, by=20, maxy = 20, track_labels = paste("Chr.", 1:5))
 plotQTL_ladder(pos_plot, lty=2)
 text(pos_plot$lane_centres, 10, c("It", "Sw"))
 
