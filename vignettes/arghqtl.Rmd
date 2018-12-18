@@ -3,8 +3,8 @@ title: "Using arghqtl: examples from *Arabidopsis thaliana*"
 author: "Tom Ellis"
 date: "`r Sys.Date()`"
 output:
-  bookdown::pdf_book:
-bibliography: /home/thoel507/Dropbox/bibtex_files/tellis.bib
+  bookdown::html_document2:
+bibliography: ../../bibtex_files/tellis.bib
 vignette: >
   %\VignetteIndexEntry{Using arghqtl}
   %\VignetteEngine{knitr::rmarkdown}
