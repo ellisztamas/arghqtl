@@ -2,7 +2,9 @@
 title: "Using arghqtl: examples from *Arabidopsis thaliana*"
 author: "Tom Ellis"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+  bookdown::pdf_book:
+  #rmarkdown::html_vignette
 bibliography: tellis.bib
 vignette: >
   %\VignetteIndexEntry{Using-arghqtl}
