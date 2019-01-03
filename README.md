@@ -15,7 +15,7 @@ devtools::install_github("ellisztamas/arghqtl", build=TRUE)
 All input data is output data from functions in `qtl`. In addition, `rmarkdown` and `knitr` may be needed to knit the vignette.
 
 ## Tutorial
-A vignette is provided covering basic usage. In principle this can be viewed with `vignette("arghqtl")`. However, this can be difficult to read, so I have also uploaded the (PDF version)[https://github.com/ellisztamas/arghqtl/blob/master/vignettes/Using-arghqtl.pdf] directly.
+A vignette is provided covering basic usage. In principle this can be viewed with `vignette("arghqtl")`. However, this can be difficult to read, so I have also uploaded the [PDF version](https://github.com/ellisztamas/arghqtl/blob/master/vignettes/Using-arghqtl.pdf) directly.
 
 ## Authors and license information
 
