@@ -9,7 +9,8 @@
 #' from clustering.
 #' 
 #' @param chr A numeric vector listing which chromosomes are to be plotted.
-#' @param qtl_list A list of QTL objects from r/qtl (i.e list(object1, object2, ...))
+#' @param qtl_list A list of QTL objects from r/qtl (i.e list(object1, object2, ...)).
+#' @param model_fit_list A list of model fit objects (i.e. objects outputted from `fit.qtl`).
 #' @param threshold Maximum length in centimorgans above which QTL are considered to be
 #' poorly defined and excluded from clustering.
 #' @param qtl_labels Prefix for labels for QTL. Usually a string. Defaults to "QTL".
@@ -23,7 +24,7 @@
 #' \item{2. Full details of all the QTL, indicating which clutser they belong to. }
 #' }
 #' @export
-cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL){
+cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL, qtl_labels = "QTL"){
   # Get ML positions for each QTL
   ax <- vector('list', length(qtl_list))
   for(l in 1:length(qtl_list)) ax[[l]] <- cbind(experiment=l, bayesint_table(qtl_list[[l]], model_fit_list[[l]]))
@@ -55,7 +56,7 @@ cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL){
         this_chr      <- this_chr[!as.logical(lh_border + rh_border + middle),]
         size_change   <- sum(lh_border + rh_border + middle) # record how many entries were removed.
       }
-      clusters[[counter]]$QTL_id <- paste("QTL", sprintf("%03d", counter), sep="_") # add a label for this cluster
+      clusters[[counter]]$QTL_id <- paste(qtl_labels, sprintf("%03d", counter), sep="_") # add a label for this cluster
       counter <- counter + 1
     }
   }

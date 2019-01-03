@@ -4,12 +4,15 @@
 \alias{cluster_qtl}
 \title{Group QTL from different experiments into blocks.}
 \usage{
-cluster_qtl(chr, qtl_list, model_fit_list, threshold = NULL)
+cluster_qtl(chr, qtl_list, model_fit_list, threshold = NULL,
+  qtl_labels = "QTL")
 }
 \arguments{
 \item{chr}{A numeric vector listing which chromosomes are to be plotted.}
 
-\item{qtl_list}{A list of QTL objects from r/qtl (i.e list(object1, object2, ...))}
+\item{qtl_list}{A list of QTL objects from r/qtl (i.e list(object1, object2, ...)).}
+
+\item{model_fit_list}{A list of model fit objects (i.e. objects outputted from `fit.qtl`).}
 
 \item{threshold}{Maximum length in centimorgans above which QTL are considered to be
 poorly defined and excluded from clustering.}

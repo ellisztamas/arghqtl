@@ -7,9 +7,9 @@
 bayesint_table(qtl_object, model_fit)
 }
 \arguments{
-\item{model_fit}{A fitQTL object from r/qtl.}
+\item{qtl_object}{A QTL object from r/qtl.}
 
-\item{qtlobject}{A QTL object from r/qtl.}
+\item{model_fit}{A fitQTL object from r/qtl.}
 }
 \value{
 A data frame listing QTL name, the maximum likelihood position of the QTL and the upper and lower

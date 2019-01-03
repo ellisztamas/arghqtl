@@ -5,7 +5,7 @@
 \title{Plot marker positions in a plotQTL plot.}
 \usage{
 plotQTL_ladder(plotQTL, marker_tick_width = 0.5, col = "gray50",
-  lty = "dashed")
+  lty = "dashed", ...)
 }
 \arguments{
 \item{plotQTL}{A plotQTL object from plotQTL().}
@@ -15,6 +15,8 @@ plotQTL_ladder(plotQTL, marker_tick_width = 0.5, col = "gray50",
 \item{col}{Colour for lane margins.}
 
 \item{lty}{Line style.}
+
+\item{...}{Further graphical parameters passed to \code{segments}.}
 }
 \description{
 Plots a solid axis with marker locations to the left of each chromosome track,

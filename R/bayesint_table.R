@@ -1,5 +1,5 @@
 #' Create a table of maximum likelihood and Bayesian credible interval positions for a QTL object.
-#' @param qtlobject A QTL object from r/qtl.
+#' @param qtl_object A QTL object from r/qtl.
 #' @param model_fit A fitQTL object from r/qtl.
 #' @return A data frame listing QTL name, the maximum likelihood position of the QTL and the upper and lower
 #' confidence intervals.

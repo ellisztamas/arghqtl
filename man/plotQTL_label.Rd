@@ -4,9 +4,9 @@
 \alias{plotQTL_label}
 \title{Plot a label for QTL on the left of a track.}
 \usage{
-plotQTL_label(plotQTL, chr, label, underlined = FALSE, plot_bar = FALSE,
-  pos = NULL, min = NULL, max = NULL, bar_offset = 2, text_offset = 6,
-  ...)
+plotQTL_label(plotQTL, chr, label, underlined = FALSE,
+  plot_bar = FALSE, pos = NULL, min = NULL, max = NULL,
+  bar_offset = 2, text_offset = 6, ...)
 }
 \arguments{
 \item{plotQTL}{A plotQTL object from plotQTL().}

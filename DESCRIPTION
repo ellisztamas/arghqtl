@@ -10,7 +10,8 @@ Description: Tools for creating more complex QTL plots for publication
     lanes per chromosome can be created to show, for example, different
     traits, or results from replicate experiments. Additional tools are
     provided for grouping QTL if their credible intervals overlap.
-License: MIT
+License: MIT + file LICENSE
+Depends: R (>= 2.10)
 Encoding: UTF-8
 LazyData: true
 Imports:
@@ -18,4 +19,4 @@ Imports:
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1

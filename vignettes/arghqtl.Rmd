@@ -2,13 +2,14 @@
 title: "Using arghqtl: examples from *Arabidopsis thaliana*"
 author: "Tom Ellis"
 date: "`r Sys.Date()`"
-output:
-  bookdown::html_document2:
-bibliography: ../../bibtex_files/tellis.bib
+output: rmarkdown::html_vignette
+bibliography: tellis.bib
 vignette: >
-  %\VignetteIndexEntry{Using arghqtl}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Using-arghqtl}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -21,7 +22,7 @@ knitr::opts_chunk$set(
 
 Often one has used the same linkage-mapping population to look for QTL for multiple traits, or perform replicate experiments in the same or different environments. This is espeically true for plants, because once a mapping population has been generated it is straightforward to maintain indefinitely as seeds. However, the abundance of QTL models available can make it tricky to plot and interpret the results.
 
-For example, @agren_genetic_2013 generated a mapping population derived from locally adpated lines of *Arabidopsis thaliana* from sites in Italy and Sweden, and tested them in reciprocal transplant experiments at both source sites over several years. Further work used the same mapping populations to delve into the genetic basis of relevant biolgical functions, such flowering time [@agren_flowering_time], freezing tolerance[@oakley2014qtl], and seed dormancy[@postma_early_2016; @postma_maternal_2015].
+For example, @agren_genetic_2013 generated a mapping population derived from locally adpated lines of *Arabidopsis thaliana* from sites in Italy and Sweden, and tested them in reciprocal transplant experiments at both source sites over several years. Further work used the same mapping populations to delve into the genetic basis of relevant biolgical functions, such flowering time [@agren_flowering_time], freezing tolerance [@oakley2014qtl], and seed dormancy[@postma_early_2016; @postma_maternal_2015].
 
 With so many traits over multiple years, this means a lot of QTL models to deal with. R/QTL has excellent facilities for fitting QTL models, but plotting tools are basic, and fairly ugly. `arghqtl` was created to make plotting and handling them easier - specifically cases where you think about how to plot a large QTL experiment and think 'aaaargh'.
 
@@ -121,6 +122,8 @@ plotQTL_qtl(
 Here is the full code to create \@ref(fig:fitness-2011):
 
 ```{r fitness-2011, fig.width=15.9/2.54, fig.height = 12/2.54, fig.cap="QTL for fruit number per planted seedling in Sweden and Italy in 2011."}
+par(mar = c(0,3,0,0))
+
 # Plot skeleton
 pos_plot <- plotQTL(
   chr = 1:5,

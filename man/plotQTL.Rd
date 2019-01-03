@@ -5,7 +5,7 @@
 \title{Create an object needed to create QTL plots.}
 \usage{
 plotQTL(chr = 1:5, marker_locations, nlanes = 2, left_gap = 2,
-  right_gap = 2, lane_labels = NULL)
+  right_gap = 2)
 }
 \arguments{
 \item{chr}{a numeric vector listing which chromosomes are to be plotted.}
