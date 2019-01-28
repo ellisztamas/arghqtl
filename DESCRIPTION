@@ -1,7 +1,7 @@
 Package: arghqtl
 Type: Package
 Title: Tools for plotting and downstream analysis of R/QTL objects in R
-Version: 0.5.3
+Version: 0.6.0
 Author: Tom Ellis
 Date: 2018-08-22
 Maintainer: Tom Ellis <thomas.ellis@ebc.uu.se>

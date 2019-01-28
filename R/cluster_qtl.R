@@ -13,6 +13,10 @@
 #' @param model_fit_list A list of model fit objects (i.e. objects outputted from `fit.qtl`).
 #' @param threshold Maximum length in centimorgans above which QTL are considered to be
 #' poorly defined and excluded from clustering.
+#' @param hard_boundary Logical. Determines whether to separate pairs QTL that
+#' overlap at only a single marker, i.e. the end of the credible interval of the
+#' first QTL falls at the same marker where the credible interval begins. If
+#' TRUE, these QTL are treated as distinct. Defaults to TRUE.
 #' @param qtl_labels Prefix for labels for QTL. Usually a string. Defaults to "QTL".
 #' 
 #' @return Two data frames:
@@ -24,7 +28,10 @@
 #' \item{2. Full details of all the QTL, indicating which clutser they belong to. }
 #' }
 #' @export
-cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL, qtl_labels = "QTL"){
+cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL, hard_boundary = TRUE, qtl_labels = "QTL"){
+  if(!is.logical(hard_boundary)){
+    stop("hard_boundary should be TRUE or FALSE.")
+  }
   # Get ML positions for each QTL
   ax <- vector('list', length(qtl_list))
   for(l in 1:length(qtl_list)) ax[[l]] <- cbind(experiment=l, bayesint_table(qtl_list[[l]], model_fit_list[[l]]))
@@ -47,9 +54,15 @@ cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL, qtl_lab
         # max and min positions of the current cluster
         mv        <- c(min(clusters[[counter]]$min_bayesint), max(clusters[[counter]]$max_bayesint))
         # Which entries overlap with the LH, RH or both boundary of the cluster?
-        lh_border <- (this_chr$min_bayesint < mv[1]) * (this_chr$max_bayesint > mv[1])
-        rh_border <- (this_chr$min_bayesint < mv[2]) * (this_chr$max_bayesint > mv[2])
-        middle    <- (this_chr$min_bayesint >= mv[1]) * (this_chr$max_bayesint <= mv[2])
+        if(hard_boundary == TRUE){
+          lh_border <- (this_chr$min_bayesint < mv[1]) * (this_chr$max_bayesint > mv[1])
+          rh_border <- (this_chr$min_bayesint < mv[2]) * (this_chr$max_bayesint > mv[2])
+          middle    <- (this_chr$min_bayesint >= mv[1]) * (this_chr$max_bayesint <= mv[2])
+        } else {
+          lh_border <- (this_chr$min_bayesint <= mv[1]) * (this_chr$max_bayesint >= mv[1])
+          rh_border <- (this_chr$min_bayesint <= mv[2]) * (this_chr$max_bayesint >= mv[2])
+          middle    <- (this_chr$min_bayesint >= mv[1]) * (this_chr$max_bayesint <= mv[2])
+        }
         #Send entries matching any of these criteria to the cluster
         clusters[[counter]] <- rbind(clusters[[counter]], this_chr[as.logical(lh_border + rh_border + middle),])
         # remove entries from the dataset.

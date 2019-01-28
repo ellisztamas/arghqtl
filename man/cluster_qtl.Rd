@@ -5,7 +5,7 @@
 \title{Group QTL from different experiments into blocks.}
 \usage{
 cluster_qtl(chr, qtl_list, model_fit_list, threshold = NULL,
-  qtl_labels = "QTL")
+  hard_boundary = TRUE, qtl_labels = "QTL")
 }
 \arguments{
 \item{chr}{A numeric vector listing which chromosomes are to be plotted.}
@@ -16,6 +16,11 @@ cluster_qtl(chr, qtl_list, model_fit_list, threshold = NULL,
 
 \item{threshold}{Maximum length in centimorgans above which QTL are considered to be
 poorly defined and excluded from clustering.}
+
+\item{hard_boundary}{Logical. Determines whether to separate pairs QTL that
+overlap at only a single marker, i.e. the end of the credible interval of the
+first QTL falls at the same marker where the credible interval begins. If
+TRUE, these QTL are treated as distinct. Defaults to TRUE.}
 
 \item{qtl_labels}{Prefix for labels for QTL. Usually a string. Defaults to "QTL".}
 }
