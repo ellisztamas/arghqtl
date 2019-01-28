@@ -47,8 +47,8 @@ cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL, qtl_lab
         # max and min positions of the current cluster
         mv        <- c(min(clusters[[counter]]$min_bayesint), max(clusters[[counter]]$max_bayesint))
         # Which entries overlap with the LH, RH or both boundary of the cluster?
-        lh_border <- (this_chr$min_bayesint <= mv[1]) * (this_chr$max_bayesint >= mv[1])
-        rh_border <- (this_chr$min_bayesint <= mv[2]) * (this_chr$max_bayesint >= mv[2])
+        lh_border <- (this_chr$min_bayesint < mv[1]) * (this_chr$max_bayesint > mv[1])
+        rh_border <- (this_chr$min_bayesint < mv[2]) * (this_chr$max_bayesint > mv[2])
         middle    <- (this_chr$min_bayesint >= mv[1]) * (this_chr$max_bayesint <= mv[2])
         #Send entries matching any of these criteria to the cluster
         clusters[[counter]] <- rbind(clusters[[counter]], this_chr[as.logical(lh_border + rh_border + middle),])
