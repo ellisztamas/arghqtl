@@ -21,8 +21,7 @@ plotQTL_boxes <- function(plotQTL, boxes, margins='full', ...){
     stop("If margins are specified this should be a vector of two elements.")
   }
   boxes$track <- match(boxes$chr, colnames(plotQTL$lane_margins)) # vector denoting which track to plot to.
-  boxes <- boxes[boxes$chr %in% 1:plotQTL$ntracks,]
-  
+
   rect(plotQTL$lane_margins[margins[1],boxes$track],
        -boxes$upper,
        plotQTL$lane_margins[margins[2],boxes$track],
