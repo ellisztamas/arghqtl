@@ -10,7 +10,7 @@
 #' This can be disabled by setting fill_cutoff to a larger number than the longest interval.
 #' 
 #' @param plotQTL A plotQTL object from plotQTL().
-#' @param qtlobject A QTL object from r/qtl. If this is specifed, model_fit should be
+#' @param qtl_object A QTL object from r/qtl. If this is specifed, model_fit should be
 #' as well, but cluster_qtl should not.
 #' @param model_fit A fitQTL object from r/qtl. If this is specifed, qtl_object should be
 #' as well, but cluster_qtl should not.

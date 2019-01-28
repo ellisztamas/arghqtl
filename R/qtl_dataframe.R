@@ -3,8 +3,8 @@
 #' Match datatables for phenotypes and genotypes for a set of lines, and combine these into a 
 #' single dataframe that r/qtl can read.
 #' 
-#' @param phenotype A table of phenotype data.
-#' @param genotype A table of genotype data, including marker information in the first two rows.
+#' @param phenotypes A table of phenotype data.
+#' @param genotypes A table of genotype data, including marker information in the first two rows.
 #' @param phenotype_id_column The column in \code{phenotype} indicating line names.
 #' @param genotype_id_column The column in \code{genotype} indicating line names to match up with
 #' those for the phenotype table.
