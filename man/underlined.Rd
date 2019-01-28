@@ -13,6 +13,9 @@ underlined(x, y, label, cex = 1, ...)
 
 \item{label}{Text to be plotted.}
 
+\item{cex}{A numerical value giving the amount by which plotting text and
+symbols should be magnified relative to the default. See `?par`.}
+
 \item{...}{Further arguments to be passed to text().}
 }
 \description{

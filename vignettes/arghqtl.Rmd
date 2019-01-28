@@ -34,7 +34,7 @@ This vignette will use data from @agren_genetic_2013 to illustrate how to use `a
 ```{r, eval=F}
 data("qtl_models") # qtl models.
 data("qtl_fits") # outputs of fitqtl
-data("mloc") # linkage map:
+data("mloc") # linkage map
 ```
 
 For each trait there are data for Italy (it) and Sweden (sw) in each year. Each element is a `qtl` object describing a QTL model.

@@ -10,6 +10,9 @@ plotQTL_qtl(plotQTL, qtl_object = NULL, model_fit = NULL,
 \arguments{
 \item{plotQTL}{A plotQTL object from plotQTL().}
 
+\item{qtl_object}{A QTL object from r/qtl. If this is specifed, model_fit should be
+as well, but cluster_qtl should not.}
+
 \item{model_fit}{A fitQTL object from r/qtl. If this is specifed, qtl_object should be
 as well, but cluster_qtl should not.}
 
@@ -25,9 +28,6 @@ points will be empty, and below which points will be filled.}
 \item{col}{Plotting colour. Defaults to black.}
 
 \item{...}{Additional plotting commands passed to points() and segments().}
-
-\item{qtlobject}{A QTL object from r/qtl. If this is specifed, model_fit should be
-as well, but cluster_qtl should not.}
 }
 \description{
 Plot QTL positions and confidence intervals from onto a plotQTL plot.

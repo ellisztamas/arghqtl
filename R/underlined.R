@@ -3,6 +3,8 @@
 #' @param x X-axis position for text.
 #' @param y Y-axis position for text.
 #' @param label Text to be plotted.
+#' @param cex A numerical value giving the amount by which plotting text and
+#' symbols should be magnified relative to the default. See `?par`.
 #' @param ... Further arguments to be passed to text().
 #' 
 #' @export

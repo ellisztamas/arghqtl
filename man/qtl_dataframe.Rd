@@ -8,14 +8,14 @@ qtl_dataframe(phenotypes, genotypes, phenotype_id_column = 1,
   genotype_id_column = 1)
 }
 \arguments{
+\item{phenotypes}{A table of phenotype data.}
+
+\item{genotypes}{A table of genotype data, including marker information in the first two rows.}
+
 \item{phenotype_id_column}{The column in \code{phenotype} indicating line names.}
 
 \item{genotype_id_column}{The column in \code{genotype} indicating line names to match up with
 those for the phenotype table.}
-
-\item{phenotype}{A table of phenotype data.}
-
-\item{genotype}{A table of genotype data, including marker information in the first two rows.}
 }
 \value{
 # a dataframe of the format for importing into R/qtl.
