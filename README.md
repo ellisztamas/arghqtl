@@ -17,6 +17,22 @@ All input data is output data from functions in `qtl`. In addition, `rmarkdown` 
 ## Tutorial
 A vignette is provided covering basic usage. In principle this can be viewed with `vignette("arghqtl")`. However, this can be difficult to read, so I have also uploaded the [PDF version](https://github.com/ellisztamas/arghqtl/blob/master/vignettes/Using-arghqtl.pdf) directly.
 
+## Citing `arghqtl`
+Text reference:
+
+> Ellis TJ (2018). arghqtl: Tools for plotting and downstream analysis of multiple R/QTL objects in R, available from https://github.com/ellisztamas/arghqtl
+
+Bibtex:
+
+```
+@Manual{ellis2018,
+	title = {arghqtl: Tools for plotting and downstream analysis of multiple {R/QTL} objects in R},
+    author = {Thomas Ellis},
+    year = {2018},
+    url = {https://github.com/ellisztamas/arghqtl},
+}
+```
+
 ## Authors and license information
 
 Tom Ellis (thomas.ellis@gmi.oeaw.ac.at)
