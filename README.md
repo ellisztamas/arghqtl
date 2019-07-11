@@ -1,6 +1,6 @@
 # arghqtl
 Tools for plotting and downstream analysis of R/QTL objects in R.
-It is intended in particular for cases where there are many QTL models to compare, and one's first though about how to plot them is 'aaaaaargh!'.
+It is intended in particular for cases where there are many QTL models to compare, and one's first thought about how to plot them is 'AAAAARGH!'.
 
 Additional tools are provided for grouping QTL if their credible intervals overlap.
 
@@ -19,6 +19,6 @@ A vignette is provided covering basic usage. In principle this can be viewed wit
 
 ## Authors and license information
 
-Tom Ellis (thomas[dot]ellis[at]ebc[dot]uu[dot]se)
+Tom Ellis (thomas.ellis@gmi.oeaw.ac.at)
 
 Available under the MIT license. See LICENSE for more information.
