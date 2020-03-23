@@ -1,4 +1,13 @@
+#' Underlined text
+#' 
 #' Add underlined text to a plot.
+#' 
+#' This is a workaround to get unerlined text on a plot. This is edited from a
+#' post by Uwe Ligges at
+#' \url{https://tolstoy.newcastle.edu.au/R/help/02a/0471.html}.
+#' 
+#' It will not work if the text is at an angle (i.e. \code{srt != 0}), or if
+#' the axis is on a log scale.
 #' 
 #' @param x X-axis position for text.
 #' @param y Y-axis position for text.
