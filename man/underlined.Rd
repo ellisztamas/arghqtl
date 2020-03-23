@@ -2,7 +2,7 @@
 % Please edit documentation in R/underlined.R
 \name{underlined}
 \alias{underlined}
-\title{Add underlined text to a plot.}
+\title{Underlined text}
 \usage{
 underlined(x, y, label, cex = 1, ...)
 }
@@ -20,4 +20,12 @@ symbols should be magnified relative to the default. See `?par`.}
 }
 \description{
 Add underlined text to a plot.
+}
+\details{
+This is a workaround to get unerlined text on a plot. This is edited from a
+post by Uwe Ligges at
+\url{https://tolstoy.newcastle.edu.au/R/help/02a/0471.html}.
+
+It will not work if the text is at an angle (i.e. \code{srt != 0}), or if
+the axis is on a log scale.
 }

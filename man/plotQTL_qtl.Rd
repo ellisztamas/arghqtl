@@ -4,8 +4,16 @@
 \alias{plotQTL_qtl}
 \title{Plot QTL positions.}
 \usage{
-plotQTL_qtl(plotQTL, qtl_object = NULL, model_fit = NULL,
-  cluster_qtl = NULL, lane, fill_cutoff = NULL, col = 1, ...)
+plotQTL_qtl(
+  plotQTL,
+  qtl_object = NULL,
+  model_fit = NULL,
+  cluster_qtl = NULL,
+  lane,
+  fill_cutoff = NULL,
+  col = 1,
+  ...
+)
 }
 \arguments{
 \item{plotQTL}{A plotQTL object from plotQTL().}

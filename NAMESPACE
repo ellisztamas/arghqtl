@@ -11,8 +11,3 @@ export(plotQTL_ladder)
 export(plotQTL_qtl)
 export(qtl_dataframe)
 export(underlined)
-
-importFrom("graphics", "arrows", "axis", "lines", "plot", "points",
-               "rect", "segments", "strheight", "strwidth", "text",
-               "title")
-importFrom("stats", "weighted.mean")

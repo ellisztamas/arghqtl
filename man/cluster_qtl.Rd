@@ -4,8 +4,14 @@
 \alias{cluster_qtl}
 \title{Group QTL from different experiments into blocks.}
 \usage{
-cluster_qtl(chr, qtl_list, model_fit_list, threshold = NULL,
-  hard_boundary = TRUE, qtl_labels = "QTL")
+cluster_qtl(
+  chr,
+  qtl_list,
+  model_fit_list,
+  threshold = NULL,
+  hard_boundary = TRUE,
+  qtl_labels = "QTL"
+)
 }
 \arguments{
 \item{chr}{A numeric vector listing which chromosomes are to be plotted.}

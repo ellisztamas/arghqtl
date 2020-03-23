@@ -4,8 +4,13 @@
 \alias{plotQTL_ladder}
 \title{Plot marker positions in a plotQTL plot.}
 \usage{
-plotQTL_ladder(plotQTL, marker_tick_width = 0.5, col = "gray50",
-  lty = "dashed", ...)
+plotQTL_ladder(
+  plotQTL,
+  marker_tick_width = 0.5,
+  col = "gray50",
+  lty = "dashed",
+  ...
+)
 }
 \arguments{
 \item{plotQTL}{A plotQTL object from plotQTL().}

@@ -4,8 +4,12 @@
 \alias{qtl_dataframe}
 \title{Concatenate data tables on genotypes and phenotypes into a format compatible with R/qtl.}
 \usage{
-qtl_dataframe(phenotypes, genotypes, phenotype_id_column = 1,
-  genotype_id_column = 1)
+qtl_dataframe(
+  phenotypes,
+  genotypes,
+  phenotype_id_column = 1,
+  genotype_id_column = 1
+)
 }
 \arguments{
 \item{phenotypes}{A table of phenotype data.}

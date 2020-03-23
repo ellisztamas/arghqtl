@@ -4,8 +4,7 @@
 \alias{plotQTL_base}
 \title{Set up an empty plot for QTL positions}
 \usage{
-plotQTL_base(plotQTL, by = 20, maxy = 11, miny = 11,
-  track_labels = NULL, ...)
+plotQTL_base(plotQTL, by = 20, maxy = 11, miny = 11, track_labels = NULL, ...)
 }
 \arguments{
 \item{plotQTL}{A plotQTL object from plotQTL().}
