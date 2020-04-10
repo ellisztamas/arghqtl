@@ -24,6 +24,5 @@ plotQTL_ladder(
 \item{...}{Further graphical parameters passed to \code{segments}.}
 }
 \description{
-Plots a solid axis with marker locations to the left of each chromosome track,
-and dashed grey dividers between lanes.
+Plots a solid axis with marker locations to the left of each chromosome track.
 }
