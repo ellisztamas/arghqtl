@@ -17,7 +17,7 @@ function(plotQTL, by=20, maxy= 11, miny=11, track_labels=NULL, ...){
   # set the plot up.
   plot(c(-plotQTL$left_gap, plotQTL$maxx), c(-max(plotQTL$track_lengths)-miny, maxy),
        col="white", frame.plot=F, axes=F, xlab="", ylab="")
-  title(ylab = "Marker distance (cM)", line = 1.5, ...) # label x-axis
+  title(ylab = "Marker position", line = 1.5, ...) # label x-axis
   # set up y-axis
   maxy           <- -max(unlist(plotQTL$map)) # length of the longest chromosome.
   tick_positions <- seq(0, maxy, by = -by)    # positions for the y-axis tick labels.
