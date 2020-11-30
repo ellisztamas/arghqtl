@@ -37,6 +37,7 @@
 #' @export
 plotQTL <-
 function(chr=1:5, marker_locations, nlanes=2, left_gap=2, right_gap=2){
+  
   nchr    <- length(chr) # number of chromosomes to plot 
   maxx    <- nchr * (10+left_gap+right_gap) - left_gap # right hand boundary of the plot
   chr_xv  <- 0:(nchr-1) * (10+left_gap+right_gap) # positions for the chromosome vertical lines
@@ -51,7 +52,7 @@ function(chr=1:5, marker_locations, nlanes=2, left_gap=2, right_gap=2){
   colnames(lane_centre) <- chr
   
   # create a list of marker positions for each track
-  map <- split(marker_locations$Position, marker_locations$Chromsosome)
+  map <- split(marker_locations[,'Position'], marker_locations[,'Chromosome'])
   
   # return a plotQTL object
   return(list(chr           = chr,
