@@ -51,7 +51,7 @@ function(chr=1:5, marker_locations, nlanes=2, left_gap=2, right_gap=2){
   colnames(lane_centre) <- chr
   
   # create a list of marker positions for each track
-  map <- split(marker_locations[,"Position"], marker_locations[,"Chromosome"])
+  map <- split(marker_locations$Position, marker_locations$Chromsosome)
   
   # return a plotQTL object
   return(list(chr           = chr,
