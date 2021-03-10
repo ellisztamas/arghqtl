@@ -4,7 +4,15 @@
 \alias{plotQTL_base}
 \title{Set up an empty plot for QTL positions}
 \usage{
-plotQTL_base(plotQTL, by = 20, maxy = 11, miny = 11, track_labels = NULL, ...)
+plotQTL_base(
+  plotQTL,
+  by = 20,
+  maxy = 11,
+  miny = 11,
+  track_labels = NULL,
+  ylab = "Marker distance",
+  ...
+)
 }
 \arguments{
 \item{plotQTL}{A plotQTL object from plotQTL().}
@@ -14,6 +22,8 @@ plotQTL_base(plotQTL, by = 20, maxy = 11, miny = 11, track_labels = NULL, ...)
 \item{maxy, miny}{Upper and lower limits of the y-axis.}
 
 \item{track_labels}{Vector of labels to adorn the bottom of each track.}
+
+\item{ylab}{Label for the y axis. Defaults to}
 
 \item{...}{Additional arguments passed to graphical parameters.}
 }

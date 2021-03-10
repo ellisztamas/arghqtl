@@ -12,6 +12,7 @@ plotQTL_qtl(
   lane,
   fill_cutoff = NULL,
   col = 1,
+  bg = col,
   ...
 )
 }
@@ -33,7 +34,11 @@ should not be.}
 \item{fill_cutoff}{Threshold length of a confidence interval on QTL positions, above which
 points will be empty, and below which points will be filled.}
 
-\item{col}{Plotting colour. Defaults to black.}
+\item{col}{Plotting colour for point estimates and credible intervals. Defaults to black.}
+
+\item{bg}{Plotting colour for the background of point estimates. This can be a single
+entry or a vector with an entry for each QTL to be plotted. Defaults to `col`. If
+`fill_cutoff` is also given, this overrides `bg`.}
 
 \item{...}{Additional plotting commands passed to points() and segments().}
 }

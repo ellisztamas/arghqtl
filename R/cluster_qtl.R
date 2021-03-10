@@ -34,7 +34,13 @@ cluster_qtl <- function(chr, qtl_list, model_fit_list, threshold = NULL, hard_bo
   }
   # Get ML positions for each QTL
   ax <- vector('list', length(qtl_list))
-  for(l in 1:length(qtl_list)) ax[[l]] <- cbind(experiment=l, bayesint_table(qtl_list[[l]], model_fit_list[[l]]))
+  names(ax) <- names(qtl_list)
+  for(l in names(qtl_list)){
+    ax[[l]] <- cbind(
+      experiment=l,
+      bayesint_table(qtl_list[[l]], model_fit_list[[l]])
+      )
+  }
   ax <- do.call('rbind', ax)
   ax <- ax[order(ax$ML_bayesint),] # sort by position
   
